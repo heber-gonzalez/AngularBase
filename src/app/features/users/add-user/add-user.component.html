@@ -1,0 +1,82 @@
+<p-confirmPopup key="popup" />
+<div class="navbar bg-base-100">
+    <div class="flex-none">
+        <p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="secondary" (click)="confirmCancel($event)"/>
+    
+    </div>
+    <div class="flex-1">
+      <h2 class="text-xl px-2 font-bold">AGREGAR USUARIO</h2>
+    </div>
+    <div class="flex-none">
+        <p-button icon="pi pi-check" [rounded]="true" [text]="true" severity="success" (click)="confirmSave($event)"/>
+    </div>
+  </div>
+<div class="flex justify-center px-10 place-content-center bg-base-200" style="height: 85vh;" data-theme="night">
+    
+    
+    <div class="card card-compact pt-5 w-full bg-base-100 shadow-xl">
+        <div class="card-body">
+          <form [formGroup]="addUserForm">
+            <div class="grid grid-cols-3 gap-3">
+                <div class="py-2">
+                    <label class="input input-bordered flex items-center gap-2" [ngClass]="{'input-error': addUserForm.controls.nombre.invalid && addUserForm.controls.nombre.touched}">
+                        <input type="text" class="grow py-2" placeholder="NOMBRES" formControlName="nombre"/>
+                    </label>
+                </div>
+                <div class="py-2">
+                    <label class="input input-bordered flex items-center gap-2" [ngClass]="{'input-error': addUserForm.controls.apellidoPaterno.invalid && addUserForm.controls.apellidoPaterno.touched}">
+                        <input type="text" class="grow py-2" placeholder="APELLIDO PATERNO" formControlName="apellidoPaterno"/>
+                    </label>
+                </div>
+                <div class="py-2">
+                    <label class="input input-bordered flex items-center gap-2" [ngClass]="{'input-error': addUserForm.controls.apellidoMaterno.invalid && addUserForm.controls.apellidoMaterno.touched}">
+                        <input type="text" class="grow py-2" placeholder="APELLIDO MATERNO" formControlName="apellidoMaterno"/>
+                    </label>
+                </div>
+                <div class="py-2">
+                    <label class="input input-bordered flex items-center gap-2" [ngClass]="{'input-error': addUserForm.controls.numeroEmpleado.invalid && addUserForm.controls.numeroEmpleado.touched}">
+                        <input type="text" class="grow py-2" placeholder="NÚMERO DE EMPLEADO" formControlName="numeroEmpleado"/>
+                    </label>
+                </div>
+    
+                
+                <div class="py-2">
+                    <label class="input input-bordered flex items-center gap-2" [ngClass]="{'input-error': addUserForm.controls.password.invalid && addUserForm.controls.password.touched}" >
+                        <input type="password" class="grow py-2"  placeholder="CONTRASEÑA" formControlName="password"/>
+                    </label>
+                </div>
+                <div class="py-2">
+                    <label class="input input-bordered flex items-center gap-2" >
+                        <input type="password" class="grow py-2"  placeholder="REPITA LA CONTRASEÑA"  [(ngModel)]="password" [ngModelOptions]="{standalone: true}" />
+                    </label>
+                </div>
+                
+    
+            </div>
+            <div class="w-full py-4">
+                <p></p>
+                <p-multiSelect 
+                    [style]="{'width':'100%'}"
+                    [loading]="loading"
+                    [options]="permissions" 
+                    [filter]="true"
+                    formControlName="permissions" 
+                    optionLabel="nombre" 
+                    placeholder="Permisos"
+                    optionValue="id"
+                />
+            </div>
+            
+            
+            
+            
+            
+        </form>
+          
+        </div>
+      </div>
+    
+
+    
+
+</div>

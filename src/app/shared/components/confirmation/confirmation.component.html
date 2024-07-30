@@ -1,0 +1,11 @@
+<div class=" w-96 bg-base-100 shadow-xl">
+
+    <div class="card-body">
+      <h2 class="card-title">{{ confirmationData.title }}</h2>
+      <p class=" py-2">{{ confirmationData.message }}</p>
+      <div class="card-actions justify-end py-2">
+        <button class="btn btn-outline" (click)="reject()">{{ confirmationData.rejectLabel }}</button>
+        <button class="btn btn-primary" (click)="accept()">{{ confirmationData.acceptLabel }}</button>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+
+<div class="overflow-x-auto py-2">
+    <label class="input input-bordered flex items-center gap-2">
+        <input type="text" class="grow" placeholder="Buscar" [(ngModel)]="searchTerm" (input)="filterItems()" />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
+    </label>
+    <br>
+    <table class="table table-zebra">
+      <!-- head -->
+      <thead>
+        <tr>
+          <th>NOMBRE</th>
+          <th>USUARIO</th>
+          <th>ESTATUS</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- row 1 -->
+        <tr *ngFor="let user of filteredUsers">
+          <td>{{ user.names }} {{ user.firstLastName }} {{ user.secondLastName }}</td>
+          <td>{{ user.username }}</td>
+          <td>
+            <div class="badge badge-outline py-2" [ngClass]="{'badge-success': user.status, 'badge-error': !user.status}">
+              {{ user.status ? 'ACTIVO' : 'INACTIVO' }} - {{ user.permissions.length }}
+              <ng-container *ngIf="user.permissions.length === 1; else multiplePermissions">PERMISO</ng-container>
+              <ng-template #multiplePermissions>PERMISOS</ng-template>
+            </div>
+          </td>
+          <td>
+            <button (click)="user_info(user)" class="btn btn-outline btn-info">SELECCIONAR</button>
+          </td>
+        </tr>
+        <!-- row 2 -->
+        
+      </tbody>
+    </table>
+  </div>
